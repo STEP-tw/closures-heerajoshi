@@ -16,9 +16,31 @@ const makeCounterFromZero = function(){
     return number++
   }
 };
-const makeDeltaTracker = undefined;
+
+const makeDeltaTracker = function(number){
+  let result = {};
+  return function(delta){
+    if(!delta){
+      delta = 0;
+    }
+    result.old = number;
+    result.delta = delta;
+    result.new = result.old + result.delta;
+    if(delta < 0){
+      number--;
+    }else{
+      number++;
+    }
+    return result;
+  }
+}
+
+
 const makeFiboGenerator = undefined;
+
+
 const makeCycler = undefined;
+    
 const curry = undefined;
 const compose = undefined;
 
