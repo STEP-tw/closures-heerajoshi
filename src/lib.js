@@ -15,10 +15,7 @@ const makeCounterFromN = function(number){
 //==================
 
 const makeCounterFromZero = function(){
-  let number = 0;
-  return function(){
-    return number++
-  }
+  return makeCounterFromN(0);
 };
 
 //==================
@@ -37,32 +34,29 @@ const makeDeltaTracker = function(number){
     }else{
       number++;
     }
-    return result;
+    return  Object.assign({}, result);
   }
 }
 
 //==================
 
 const makeFiboGenerator = function(firstNum, secondNum){
-    let lastNum = -secondNum;
-  let currentNum = secondNum -1;
 
-  if(!firstNum){
-    firstNum = 1;
+  if(!firstNum && !secondNum){
+    firstNum = 0;
+    secondNum =1;
   }
-  if(!secondNum){
-    lastNum = -1;
-    currentNum = 1;
+  if(firstNum && !secondNum){
+    secondNum   =firstNum;
+    firstNum = 0;
   }
 
-  const fiboseries = function(){
-    let sum = Math.abs(lastNum + currentNum);
-    let mulresult = sum*firstNum;
-    lastNum = currentNum;
-    currentNum = sum;
-    return mulresult;
+return function(){
+    let temp  = firstNum;
+  firstNum = secondNum;
+    secondNum = firstNum + temp;
+    return temp;
   }
-  return fiboseries;
 }
 
 //==================
