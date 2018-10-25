@@ -36,11 +36,29 @@ const makeDeltaTracker = function(number){
 }
 
 
-const makeFiboGenerator = undefined;
+const makeFiboGenerator = function(firstNum, secondNum){
+    let lastNum = -secondNum;
+  let currentNum = secondNum -1;
 
+  if(!firstNum){
+    firstNum = 1;
+  }
+  if(!secondNum){
+    lastNum = -1;
+    currentNum = 1;
+  }
+
+  const fiboseries = function(){
+    let sum = Math.abs(lastNum + currentNum);
+    let mulresult = sum*firstNum;
+    lastNum = currentNum;
+    currentNum = sum;
+    return mulresult;
+  }
+  return fiboseries;
+}
 
 const makeCycler = undefined;
-    
 const curry = undefined;
 const compose = undefined;
 
