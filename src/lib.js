@@ -4,11 +4,15 @@ const makeConstant = function(arg){
   }
 }
 
+//==================
+
 const makeCounterFromN = function(number){
   return function(){
     return number++
   }
 };
+
+//==================
 
 const makeCounterFromZero = function(){
   let number = 0;
@@ -16,6 +20,8 @@ const makeCounterFromZero = function(){
     return number++
   }
 };
+
+//==================
 
 const makeDeltaTracker = function(number){
   let result = {};
@@ -35,6 +41,7 @@ const makeDeltaTracker = function(number){
   }
 }
 
+//==================
 
 const makeFiboGenerator = function(firstNum, secondNum){
     let lastNum = -secondNum;
@@ -58,7 +65,22 @@ const makeFiboGenerator = function(firstNum, secondNum){
   return fiboseries;
 }
 
-const makeCycler = undefined;
+//==================
+
+const makeCycler  = function(input) {
+  let index = 0;
+  let newArray = input.slice();
+  let length = newArray.length;
+  return function() {
+    let output = newArray[index++];
+    if (index == newArray.length) {
+      index = 0;
+    }
+    return output;
+  }
+}
+
+//==================
 
 const curry = function(functionFirst, number) {
   return function(firstNum,secondNum) {
@@ -66,11 +88,15 @@ const curry = function(functionFirst, number) {
   }
 }
 
+//==================
+
 const compose = function(function1, function2) {
   return function(list1, list2) {
     return function1(function2(list1, list2));
   }
 };
+
+//==================
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
