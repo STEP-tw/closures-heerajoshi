@@ -60,7 +60,12 @@ const makeFiboGenerator = function(firstNum, secondNum){
 
 const makeCycler = undefined;
 const curry = undefined;
-const compose = undefined;
+
+const compose = function(function1, function2) {
+  return function(list1, list2) {
+    return function1(function2(list1, list2));
+  }
+};
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
