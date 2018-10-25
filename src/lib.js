@@ -59,7 +59,12 @@ const makeFiboGenerator = function(firstNum, secondNum){
 }
 
 const makeCycler = undefined;
-const curry = undefined;
+
+const curry = function(functionFirst, number) {
+  return function(firstNum,secondNum) {
+    return functionFirst(number, firstNum, secondNum);
+  }
+}
 
 const compose = function(function1, function2) {
   return function(list1, list2) {
