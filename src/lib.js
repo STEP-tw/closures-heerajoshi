@@ -20,23 +20,17 @@ const makeCounterFromZero = function(){
 
 //==================
 
-const makeDeltaTracker = function(number){
-  let result = {};
+const makeDeltaTracker = function(old){
   return function(delta){
     if(!delta){
-      delta = 0;
+      delta =0;
     }
-    result.old = number;
-    result.delta = delta;
-    result.new = result.old + result.delta;
-    if(delta < 0){
-      number--;
-    }else{
-      number++;
-    }
-    return  Object.assign({}, result);
+    let object = {old:old,delta:delta,new:delta+old};
+    old = old+delta;
+    return object;
   }
 }
+
 
 //==================
 
